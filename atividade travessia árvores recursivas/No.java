@@ -1,3 +1,6 @@
+import java.util.Queue;
+import java.util.LinkedList;
+
 class No {
     String valor;
     No esquerda, direita;
@@ -38,5 +41,19 @@ class No {
         }
     }
 
+    public void emNivel(No raiz){
+        if (raiz == null) return;
+
+        Queue<No> fila = new LinkedList<>();
+        fila.add(raiz);
+
+        while (!fila.isEmpty()){
+            No atual = fila.poll();
+            System.out.print(atual.valor + " ");
+
+            if (atual.esquerda != null) fila.add(atual.esquerda);
+            if (atual.direita != null) fila.add(atual.direita);
+        }
+    }
 }
   
